@@ -48,7 +48,10 @@ export default function ActivityAdder() {
         placeholder="Neue Aktivität"
         disabled={isPending}
       />
-      <AddButton onClick={handleAdd} disabled={isPending} />
+      <AddButton
+        onClick={handleAdd}
+        disabled={isPending || input.length === 0}
+      />
     </div>
   )
 }

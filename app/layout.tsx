@@ -9,7 +9,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <head />
-      <body className="bg-orange-300 grid justify-center p-4">
+      <body className="bg-orange-300 grid justify-center p-4 max-w-5xl">
         <Navbar />
         {children}
       </body>

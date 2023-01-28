@@ -1,10 +1,10 @@
-'use client'
+"use client"
 import Link from "next/link"
-import {usePathname} from 'next/navigation'
+import { usePathname } from "next/navigation"
 
 export default function Navbar() {
   return (
-    <nav className="flex gap-4 mb-8">
+    <nav className="flex gap-4 mb-8 justify-center items-center">
       <NavLink href="/" name="Block" />
       <NavLink href="/activities" name="Aktivitäten" />
     </nav>
@@ -23,7 +23,9 @@ function NavLink({ href, name }: NavLinkProps) {
   return (
     <Link
       href={href}
-      className={`${!selected ? "text-white" : "text-orange-500"} bg-blue-900 p-2 rounded w-36 text-center`}
+      className={`${selected ? "text-blue-500" : "text-white"} ${
+        selected ? "border-b-2" : "border-b-0"
+      } border-blue-500 text-center`}
     >
       {name}
     </Link>
