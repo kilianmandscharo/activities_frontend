@@ -1,9 +1,11 @@
 "use client"
 
 import { Activity } from "@/schemas/schemas"
+import { Check, Edit } from "@mui/icons-material"
 import { useRouter } from "next/navigation"
 import { useState, useTransition } from "react"
 import DeleteButton from "./DeleteButton"
+import IconButton from "./IconButton"
 
 async function deleteActivity(id: number) {
   return await fetch(`http://localhost:8080/activity/${id}`, {
@@ -77,7 +79,7 @@ export default function ActivityItem({ activity }: ActivityItemProps) {
       } flex gap-4 justify-between items-center`}
     >
       {!editing ? (
-        <p onClick={handleSelect} className="border-2 border-blue-500 px-2 rounded cursor-pointer">
+        <p onClick={handleSelect} className="cursor-pointer">
           {activity.name}
         </p>
       ) : (
@@ -88,12 +90,16 @@ export default function ActivityItem({ activity }: ActivityItemProps) {
         />
       )}
       <div className="flex justify-center items-center gap-2">
-        <button
+        <IconButton
           onClick={handleUpdate}
-          className="bg-blue-500 text-white py-1 rounded w-24"
-        >
-          {editing ? "Ok" : "Bearbeiten"}
-        </button>
+          icon={
+            editing ? (
+              <Check sx={{ color: "white" }} />
+            ) : (
+              <Edit sx={{ color: "white" }} />
+            )
+          }
+        />
         <DeleteButton onClick={handleDelete} disabled={isPending} />
       </div>
     </div>

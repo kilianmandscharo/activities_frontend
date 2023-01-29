@@ -1,4 +1,5 @@
 import BlockAdder from "@/components/BlockAdder"
+import BlockItem from "@/components/BlockItem"
 import { Activity } from "@/schemas/schemas"
 
 interface BlocksProps {
@@ -22,10 +23,11 @@ export default async function Blocks({ params }: BlocksProps) {
         {activity.blocks === null || activity.blocks.length === 0 ? (
           <p className="text-center italic">--- Keine Blöcke ---</p>
         ) : (
-          activity.blocks.map((b) => <div key={b.id} className="flex gap-4">
-              <p>{b.startTime}</p>
-              <p>{b.endTime}</p>
-            </div>)
+          activity.blocks.map((b) => (
+            <div key={b.id} className="flex gap-4">
+                <BlockItem block={b} />
+            </div>
+          ))
         )}
       </div>
       <BlockAdder activity={activity} />
