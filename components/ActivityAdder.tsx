@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { startTransition, useState, useTransition } from "react"
+import { useState, useTransition } from "react"
 import AddButton from "./AddButton"
 
 async function addActivity(name: string) {

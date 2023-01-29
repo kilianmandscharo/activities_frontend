@@ -17,7 +17,7 @@ async function updateActivity(name: string, activity: Activity) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({...activity, name: name}),
+    body: JSON.stringify({ ...activity, name: name }),
   })
 }
 
@@ -48,6 +48,10 @@ export default function ActivityItem({ activity }: ActivityItemProps) {
 
   async function handleUpdate() {
     if (editing) {
+      if (input === activity.name) {
+        setEditing(false)
+        return
+      }
       setIsFetching(true)
       await updateActivity(input, activity)
       setIsFetching(false)
@@ -61,6 +65,10 @@ export default function ActivityItem({ activity }: ActivityItemProps) {
     }
   }
 
+  function handleSelect() {
+    router.push(`/activities/${activity.id}`)
+  }
+
   return (
     <div
       key={activity.id}
@@ -69,7 +77,9 @@ export default function ActivityItem({ activity }: ActivityItemProps) {
       } flex gap-4 justify-between items-center`}
     >
       {!editing ? (
-        <p>{activity.name}</p>
+        <p onClick={handleSelect} className="border-2 border-blue-500 px-2 rounded cursor-pointer">
+          {activity.name}
+        </p>
       ) : (
         <input
           value={input}

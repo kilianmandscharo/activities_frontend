@@ -1,21 +1,21 @@
 export interface Pause {
   id: number
-  start: string
-  end: string
-  blockID: number
+  startTime: string
+  endTime: string
+  blockId: number
 }
 
 export interface Block {
   id: number
-  start: string
-  end: string
-  pauses: Pause[]
-  activityID: number
+  startTime: string
+  endTime: string
+  pauses: Pause[] | null
+  activityId: number
 }
 
 export interface Activity {
   id: number
   name: string
-  blocks: Block[]
-  userID: number
+  blocks: Block[] | null
+  userId: number
 }
