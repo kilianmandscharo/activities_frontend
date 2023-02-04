@@ -3,7 +3,7 @@ import BlockItem from "@/components/BlockItem"
 import { Activity } from "@/schemas/schemas"
 
 interface BlocksProps {
-  params: { blocks: string }
+  params: { activityId: string }
 }
 
 async function getActivity(id: number) {
@@ -13,7 +13,7 @@ async function getActivity(id: number) {
 }
 
 export default async function Blocks({ params }: BlocksProps) {
-  const activity = await getActivity(parseInt(params.blocks))
+  const activity = await getActivity(parseInt(params.activityId))
 
   if (activity === null) return <div>Aktivität nicht geladen</div>
   return (
